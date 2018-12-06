@@ -1,0 +1,4 @@
+com\graphql\Application.class
+com\graphql\controller\QueryController.class
+com\graphql\client\GraphQLClient.class
+com\graphql\model\Person.class

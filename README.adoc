@@ -1,0 +1,96 @@
+:spring_boot_version: 2.0.5.RELEASE
+:spring-boot: https://github.com/spring-projects/spring-boot
+:toc:
+:icons: font
+:source-highlighter: prettify
+
+
+This project helps you build Java Spring applications aimed at consuming elastic data APIS using GraphQL queries and mutations served using Spring RestTemplate. 
+This application leverages American Express Nodes library while creating request for GraphQL. The request is then wrapped inside a Java String and will be passed 
+over to server using Spring RestTemplate.
+
+This is the client side in the seris of GraphQL Client-Server architecture aimed at enabling GraphQL with Java and SpringBoot applications.
+----
+GraphQL
+Java 
+SpringBoot 
+American Express Nodes
+----
+
+The GraphQL server which is responsible for producing the GraphQL APIs is covered in https://gitlab.com/elastic-data-service/elastic-data-service-server 
+
+
+== What you'll build
+You'll build a simple web application with Spring Boot and add some useful services to it.
+
+== What you'll need
+
+java_version:1.8
+
+include::https://github.com/americanexpress/nodes/blob/master/README.md[]
+
+
+== Learn what you can do with GraphQL
+
+GraphQL is query language for APIs. To read more please got to:
+https://graphql.org/
+
+== Create an Application class
+Here you create an `Application` class with the components:
+`com/sbawa/client/api/elastic/Application.java`
+
+== Create Request for GraphQL Mutation
+`com/sbawa/client/api/elastic/model/MutationPersonName`
+
+This class build a request object to operate on mutation and leverages the Nodes library. 
+The mutations needs to be maped as one-to-one with request objects.
+
+Likewise, we have another mutation mapped with following class
+`com/sbawa/client/api/elastic/model/MutationPersonNameAge`
+
+== Create Request for GraphQL Query
+`com/sbawa/client/api/elastic/model/QueryPersonById`
+
+This class build a request object to operate on query and leverages the Nodes library. 
+Likewise mutations, querries also needs to be maped as one-to-one with request objects.
+
+
+== Create the GraphQLClient
+`com/sbawa/client/api/elastic/client/GraphQLClient`
+
+Here you will build GraphQLRequestEntity from the Query or Mutation and then wrap it in a String before making 
+call to GraphQL endpoint using RestTeamplate.
+
+The return is always a Map<String, Object>, and this also creates the respective domain object before returning to caller.
+
+It leverages Nodes library to create GraphQLRequestEntity for each request object.  
+
+== Run the application
+
+If you are using Maven, execute:
+
+[subs="attributes"]
+----
+java -jar target/graphql-java-client-0.1.0.jar
+----
+
+....
+$ curl localhost:8081
+
+The server runs at port 8081 
+This port can be configured from server.port in application.properties
+....
+
+== checkout the service 
+
+Invoke the endpoint (http://localhost:8081/query) and you should see response.
+This endpoint triggers the end to flow between client and server. 
+Make sure your GraphQL server application is running.
+
+
+== Summary
+----
+ 
+Congratulations on consuming your first GraphQL APIs inside JVM and wrapped in Spring RestTemplate.
+----
+
