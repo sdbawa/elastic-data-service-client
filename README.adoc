@@ -17,7 +17,7 @@ SpringBoot
 American Express Nodes
 ----
 
-The GraphQL server which is responsible for producing the GraphQL APIs is covered in https://gitlab.com/elastic-data-service/elastic-data-service-server 
+The GraphQL server which is responsible for producing the GraphQL APIs is covered in https://github.com/sdbawa/elastic-data-service-server
 
 
 == What you'll build
